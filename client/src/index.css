@@ -1,0 +1,115 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  text-align: center;
+  align-items: center;
+  
+}
+*{
+   margin:0;
+   padding:0;
+   box-sizing: border-box;
+   overflow-x: hidden;
+
+}
+.carousel-container{
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 3rem;
+  
+}
+.carouselItem{
+  padding:0.1rem 1.2rem 1rem 1.2rem;
+
+}
+
+.restProfile{
+  width: 100vw;
+   padding:2rem 3rem; 
+}
+
+
+.FoodContainer{
+  overflow-y:hidden;
+  margin:1rem;
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  padding: 0 5rem;
+  margin:1rem 2rem;
+  gap: 0.8rem;
+}
+.ItemsContainer:hover{
+ transform: scale(0.9);
+ transition: all 0.05s ease 0s;
+ overflow: hidden;
+}
+
+
+
+
+.SingleRest{
+  width: 900px;
+  height: 100%;
+  margin:0 8rem;
+  
+}
+
+.header{
+  
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  
+}
+.header>div{
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+.subHeader{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ProductContainer >div{
+   display: flex;
+   width: 100%;
+   padding: 0.5rem 3rem;
+   justify-content: space-between;
+
+}
+
+.Footer{
+  background-color: #f1f1f6;
+  
+}
+.Footerhead{
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     height: 50px;
+     width: 100%;
+     padding: 3rem 1rem;
+     overflow-y: hidden;
+}
+.Footerhead>div{
+  padding: 0.5rem;
+  
+}
+.Footerhead>span{
+  font-size: 13px;
+  color: #93959f;
+}
+.Subfooter{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.imageContainer{
+  width:70px ;
+ 
+}
+
+
+
