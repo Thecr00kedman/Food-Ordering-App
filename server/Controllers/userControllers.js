@@ -98,9 +98,6 @@ export const addpartner = async(req, res) => {
         } else if (!name || !image || !landmark || !categories || !origin || !address ) {
             return res.json({ warning: 'Please Fill all the fields' });
         } 
-    //     else if(!image){
-    //         return res.json({warning:"Please select a photo for your restaurant"})
-    //    }
           else if(!email){
             return res.json({warning:'Email can not be empty'})
           }else if (!password || password.length < 6) {

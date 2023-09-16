@@ -11,6 +11,10 @@ import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useGlobalContext } from './Context/Context';
 import RestaurantPage from './Pages/RestaurantPage/RestaurantPage';
+import Cart from './Pages/Cart/Cart';
+import PreviousOrder from './Pages/Previous Orders/PreviousOrders';
+import RestaurantOrder from './Pages/RestaurantPage/RestaurantOrder';
+import ShowAll from './Pages/ShowAll/ShowAll';
 
 
 
@@ -54,6 +58,10 @@ function App() {
              <Route path='/RestSignup'element={<RestSignup/>}/>
              <Route path='/RestProfile' element={<RestProfile/>}/>
              <Route path='/Restaurant/:id' element={<RestaurantPage/>}/>
+             <Route path='/Cart' element={<Cart/>}/>
+             <Route path='/PreviousOrder' element={<PreviousOrder/>} />
+             <Route path='/RestaurantOrder' element={<RestaurantOrder/>} />
+             <Route path='/ShowAll' element={<ShowAll/>}/>
 
          </Routes>
   </BrowserRouter>

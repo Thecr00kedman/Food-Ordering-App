@@ -26,6 +26,7 @@ const ProductSchema = new mongoose.Schema({
         required: true,
         minlength: 1, // Use "minlength" for minimum string length
     },
+    adminID:{ type:mongoose.Schema.Types.ObjectId, required:true, ref:"Partner"}
 });
 
 const Product = mongoose.model('Product', ProductSchema);

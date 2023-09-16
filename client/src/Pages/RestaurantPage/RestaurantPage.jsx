@@ -1,60 +1,115 @@
 import { Box,Typography,Button } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Navbar from "../../Components/Navbar/Navbar";
+import StarIcon from '@mui/icons-material/Star';
 import { useDispatch, useSelector } from "react-redux";
 import { GetRestaurant } from "../../Redux/Store";
-import {useParams} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
+import { ImageContainer,Product,Left,Right,SellerHead,BoxContainer,Top,BoxDropdown } from "../styles";
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { AddToCart } from "../../Redux/Actions";
+import { toast } from "react-toastify";
+
+
+
+
 
 export const RestaurantPage = () => {
     
+    const userId = localStorage.getItem('userId') //this is user Id
+    const id= useParams(); //this is restaurant id
 
-    const id= useParams();
     const dispatch= useDispatch();
-    
+    const restId= useParams(); 
+    const restroId= restId.id
 
-    useEffect(()=>{
-
+    useEffect(()=>{     
        dispatch(GetRestaurant(id))
 
-
-
     },[id])
+
+    const navigate = useNavigate();
     const data = useSelector((state)=>state.restaurants.Singlerestaurant)
-   
+    const [toggle,setToggle] = useState(false)
+    
 
+    const AddproductstoCart = async({productId,productName,productQuantity,productPrice,productImage,userId,restroId})=>{
 
+       const response= await AddToCart({productId,productName,productQuantity,productPrice,productImage,userId,restroId})
+       console.log(response)
+       if(response){
+         if(response.data.error){
+            toast.error(response.data.error)
+         }else if(response.data.success){
+            toast.success(response.data.success)
+            navigate('/cart')
+         }
+       }
+       else{
+            toast.error(response.data.error)
+       }
+       
+    }
     return(
-
-        <>
+     <>
         <Navbar/>
         <div className="SingleRest">       
                 <div className="header">
                       
                       <div><Typography variant="h5">{data.name}</Typography></div>
-                      <div><Typography>Category</Typography></div>
-                      <div><Typography>Location</Typography></div>
-                      <div className="deliver" style={{display:"flex",flexDirection:'row'}}><DeliveryDiningIcon/>&nbsp;&nbsp;<Typography>Based on distance, an additional delivery fee will apply</Typography></div>  
+                      <div className="subheader"style={{display:'flex'}}><span>{data.categories}</span>&nbsp;<span>{data.origin}</span></div>
+                      <div><span>{data.landmark}</span></div>
+                      <div className="deliver" style={{display:"flex",flexDirection:'row'}}><DeliveryDiningIcon/>&nbsp;&nbsp;<span>Based on distance, an additional delivery fee will apply</span></div>  
                </div>
               
-               <div className="subHeader">
-                           <div><AccessTimeIcon/>&nbsp;&nbsp;42 mins</div>
-                           <div><CurrencyRupeeIcon/>&nbsp;&nbsp;400 for two</div>
+               <div className="Downheader">
+                           <div><AccessTimeIcon/>&nbsp;&nbsp;<Typography>42 mins</Typography></div>
+                           <div><CurrencyRupeeIcon/>&nbsp;&nbsp;<Typography>400 for two</Typography></div>
                    </div>
 
-                   <div style={{textAlign:'left'}}><Button variant='contained'>Toggle button</Button></div>
-                   
-                   <div className="ProductContainer">
-                    
-                        <div><Button variant='contained'>Recommended<KeyboardArrowDownIcon/></Button></div>
-                    
-                        <div><Button variant='contained'>Pocket Friendly<KeyboardArrowDownIcon/></Button></div>
 
-                        <div><Button variant='contained'>Combo<KeyboardArrowDownIcon/></Button></div>
+                   
+                   <div style={{display:'flex',flexDirection:"column"}}>
+                    
+                       {(!toggle )? 
+                       
+                               <BoxContainer style={{height:"7rem"}}>Recommended&nbsp;({data?.products?.length})<KeyboardArrowDownIcon sx={{cursor:"pointer"}} onClick={()=>setToggle(true)}/></BoxContainer>:
+                               <BoxDropdown>
+                                       <Top style={{textAlign:'left'}}>Recommended<KeyboardArrowUpIcon sx={{cursor:"pointer"}} onClick={()=>setToggle(false)}/></Top>
+                                    {
+                                      
+                                         data.products.map((item)=>(
+                                             
+                                                   <Product key={item._id}>
+                                                   
+                                                   
+                                                   <Left>
+                                                            <div><SellerHead><RadioButtonCheckedIcon sx={{fontSize:'14px',color:'green'}}/>&nbsp;<StarIcon sx={{color:"orange",fontSize:'15px'}}/><Typography fontSize={"small"} color={"orange"}>Bestseller</Typography></SellerHead>
+                                                            <div><Typography>{item.name}</Typography></div>
+                                                            <div style={{display:"flex",alignItems:"center"}}><CurrencyRupeeIcon sx={{fontSize:"16px"}}/><Typography>{item.price}</Typography></div></div>
+                                                            <div><span>{item.description}</span>
+                                                            </div>
+                                                   </Left>
+                                                   <Right>
+                                                       <ImageContainer>
+                                                           <div className="imageBox"><img src={item.image} alt=" " /></div>
+                                                           <Button variant="contained" onClick={()=>AddproductstoCart({productId:item._id,productName:item.name,productQuantity:item.quantity,productPrice:
+                                                                    item.price, productImage:item.image,userId,restroId})}>Add</Button>
+
+                                                       </ImageContainer>
+                                                   </Right>
+                                               
+                                              </Product>))
+}
+   
+                            </BoxDropdown>}
+                
       
                    </div>
                    <div className="Footer">
@@ -66,11 +121,6 @@ export const RestaurantPage = () => {
                          <div style={{display:"flex", flexDirection:"row"}}><LocationOnIcon/>&nbsp;&nbsp;Location</div>
                         </div>
                    </div>
-                  
-
-
-                
-      
 
 
         </div>

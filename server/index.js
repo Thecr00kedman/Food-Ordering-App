@@ -6,6 +6,10 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 
 
+
+// for payment integration
+
+
 const app = express();
 app.use(cors())
 

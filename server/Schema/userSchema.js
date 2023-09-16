@@ -19,7 +19,9 @@ export const userschema = mongoose.Schema({
             min:5
             
            },
-           cart:{type:Array,ref:"cart"}
+           cart:{type:Array,ref:"Partner"},
+           order:{type:Array,ref:"Order"}
+
 })
   const User = mongoose.model("User", userschema)
 export default User;

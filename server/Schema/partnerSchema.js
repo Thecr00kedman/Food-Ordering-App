@@ -1,8 +1,5 @@
 import mongoose from "mongoose";
 
-
-
-
 export const partnerschema = mongoose.Schema({
           name:{
                type:String,
@@ -47,7 +44,8 @@ export const partnerschema = mongoose.Schema({
                required:'true',
                min:5,
           },
-          products:{type:Array,ref:"Products"}
+          products:{type:Array,ref:"Products"},
+          restorder:{type:Array,ref:"RestOrder"}
           
 })
 

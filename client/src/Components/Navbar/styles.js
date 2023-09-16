@@ -13,7 +13,10 @@ export const Nav = styled(Box)((theme)=>({
     position:'static',
     background:"white",
     boxShadow:'3px 3px 6px 3px #888888',
-    
+    "& div > a":{
+       textDecoration:'none',
+    }
+   
 }))
 
 
@@ -59,7 +62,14 @@ export const Cart = styled(Box)((theme)=>({
        display:'flex'
 }))
 export const Seller = styled(Box)((theme)=>({
-       display:"flex"
+       display:"flex",
+      
+       "& a":{
+         display:'flex',
+         flexDirection:'row',
+         textDecoration:'none',
+         color:'black'
+       }
 }))
 export const Logout = styled(Box)((theme)=>({
 

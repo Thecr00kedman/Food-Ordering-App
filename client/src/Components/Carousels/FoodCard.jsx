@@ -23,16 +23,13 @@ export const FoodCard = () => {
        
   },[])
 
-
-
-    
- 
-      return (
+  return (
 
        
         <>
       <Typography variant="h4" style={{textAlign:'left',marginLeft:'4rem'}}>Restaurants with online food delivery in Lucknow</Typography>
         <div className="FoodContainer">
+          
           
     
           {
@@ -42,6 +39,7 @@ export const FoodCard = () => {
                    <Typography fontSize={"18px"} fontWeight={550} color={"#02060CBF"}>{item.name}</Typography>
                    <Box style={{alignItems:'center', display:'flex'}}><StarsIcon style={{color:"green"}}/>&nbsp;&nbsp;<Typography>4.1</Typography></Box>
                    <span>{item.categories}</span>
+                   
                    <span>{item.origin}</span>
                 </BoxFood>
             ))

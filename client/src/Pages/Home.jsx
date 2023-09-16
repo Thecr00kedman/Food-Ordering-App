@@ -7,6 +7,7 @@ import { verifyUser } from "../Redux/Actions"
 import { useNavigate } from "react-router-dom"
 import { useCookies } from "react-cookie"
 import FoodCard from "../Components/Carousels/FoodCard"
+import {toast} from 'react-toastify'
 
 
 export const Home = () => {

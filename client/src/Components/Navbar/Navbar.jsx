@@ -16,11 +16,13 @@ import {toast} from 'react-toastify'
 import FoodBankIcon from '@mui/icons-material/FoodBank';
 import HomeMaxIcon from '@mui/icons-material/HomeMax';
 import AddIcon from '@mui/icons-material/Add';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
 
 
 export const Navbar = () => {
     const navigate= useNavigate()
     const [cookies, setCookies, removeCookies] = useCookies(["access_token"]);
+    
 
 
     const handleLogout = ()=> {
@@ -52,34 +54,33 @@ export const Navbar = () => {
         
                account?<Link style={ {display:'flex',textDecoration:'none',color:'Black',alignItems:"center"}}><input type="text" placeholder="search your food here"/>&nbsp;&nbsp;<SearchIcon/></Link> 
                 :
-                 (partner ?<Link style={ {display:'flex',textDecoration:'none',color:'Black'}}><HomeMaxIcon/>&nbsp;&nbsp;Show All</Link>:<Box><input type="text" placeholder="search your food here"/>&nbsp;&nbsp;<SearchIcon/></Box>)
+                 (partner ?<Link to={'/ShowAll'} style={ {display:'flex',textDecoration:'none',color:'Black'}}><HomeMaxIcon/>&nbsp;&nbsp;Show All</Link>:<Box><input type="text" placeholder="search your food here"/>&nbsp;&nbsp;<SearchIcon/></Box>)
 
              }
             </SearchBar>
-            <Offers style={partner? {display:"visible"}:{display:"none"}}>
-                <Link style={{display:"flex", alignItems:'center',textDecoration:'none',color:'black'}} to={'/RestProfile'}><AddIcon/>&nbsp;&nbsp;Add Dishes</Link>
-            </Offers>
+            
             <Offers>
-               <Link style={ {display:'flex',textDecoration:'none',color:'Black'}}><LocalOfferIcon/>&nbsp;&nbsp;<Typography>Offers</Typography></Link>
-            </Offers>
+            {partner ?<Link style={{display:"flex", alignItems:'center',textDecoration:'none',color:'black'}} to={'/RestProfile'}><AddIcon/>&nbsp;&nbsp;Add Dishes</Link>:<Link style={ {display:'flex',textDecoration:'none',color:'Black'}}><LocalOfferIcon/>&nbsp;&nbsp;<Typography>Offers</Typography></Link>
+            }    </Offers>
            
             <Help>
                <Link style={ {display:'flex',textDecoration:'none',color:'Black'}}><CatchingPokemonIcon/>&nbsp;&nbsp;<Typography>Help</Typography></Link>
             </Help>
             <SignIn>
+                
                 {
-                (account) ?<Profile account={account} setAccount={setAccount}/>:partner?(<Profile partner={partner} setPartner={setPartner}/>):<Link style={ {display:'flex',textDecoration:'none',color:'Black'}}to={'/Login'}><PersonIcon/>&nbsp;&nbsp;<Typography>Sign in</Typography></Link>
+                (account) ?<Profile account={account} setAccount={setAccount} />:partner?(<Profile partner={partner} setPartner={setPartner}/>):<Link style={ {display:'flex',textDecoration:'none',color:'Black'}}to={'/Login'}><PersonIcon/>&nbsp;&nbsp;<Typography>Sign in</Typography></Link>
                 }
             </SignIn>
             <Seller>
-                <Link to={"/RestSignup"}style={partner ?{display:'none'} :{display:'flex',textDecoration:'none',color:'Black'}}><StorefrontIcon/>&nbsp;&nbsp;Become a Restaurant</Link>
-            </Seller>
+{               account?<Link to={'/PreviousOrder'}><FastfoodIcon/>&nbsp;&nbsp;<Typography>Orders</Typography></Link>: <Link to={"/RestSignup"}style={partner ?{display:'none'} :{display:'flex',textDecoration:'none',color:'Black'}}><StorefrontIcon/>&nbsp;&nbsp;Become a Restaurant</Link>
+}            </Seller>
             <Cart>
                 {
-                    account ?<Link style={ {display:'flex',textDecoration:'none',color:'Black'}}><AddShoppingCartIcon/>&nbsp;&nbsp;<Typography>Cart</Typography></Link> 
+                    account ?<Link style={ {display:'flex',textDecoration:'none',color:'Black'}} to={'/Cart'}><AddShoppingCartIcon/>&nbsp;&nbsp;<Typography>Cart</Typography></Link> 
                     :
-                    (partner? <Link style={ {display:'flex',textDecoration:'none',color:'Black'}}><FoodBankIcon/>&nbsp;&nbsp;<Typography>Orders</Typography></Link>
-                    :<Link style={ {display:'flex',textDecoration:'none',color:'Black'}}><AddShoppingCartIcon/>&nbsp;&nbsp;<Typography>Cart</Typography></Link>
+                    (partner? <Link style={ {display:'flex',textDecoration:'none',color:'Black'}} to={'/RestaurantOrder'}><FoodBankIcon/>&nbsp;&nbsp;<Typography>Orders</Typography></Link>
+                    :<Link style={ {display:'flex',textDecoration:'none',color:'Black'}} to={'/Cart'}><AddShoppingCartIcon/>&nbsp;&nbsp;<Typography>Cart</Typography></Link>
                     )
                 }            
             </Cart>

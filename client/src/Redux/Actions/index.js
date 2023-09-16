@@ -52,11 +52,66 @@ const URL= 'http://localhost:8000';
             }
         }
         export const CreateProduct = async({name,price,image,description,quantity,address,landmark,categories,origin,userId}) =>{
-            // console.log(data)
+            
             
               try {
-                   return await axios.post(`${URL}/upload/addproduct/${userId}`,{name,price,image,description,quantity})
+                   return await axios.post(`${URL}/upload/addproduct/${userId}`,{name,price,image,description,quantity,address,landmark,categories,origin})
               } catch (error) {
                 console.log('error while calling the add dish api',error)
               }
         }
+
+        export const AddToCart = async({productId,productName,productQuantity,productPrice,productImage,userId,restroId})=> {
+
+            try {
+               return await axios.post(`${URL}/cart`,{productId,productName,productQuantity,productPrice,productImage,userId,restroId})
+                
+            } catch (error) {
+                console.log('error while calling the Addtocart API',error)
+            }
+
+
+        }
+        
+        export const RemoveFromCart = async({productId,userId}) => {
+            console.log({productId,userId})
+            try {
+                 await axios.put(`${URL}/delete`,{productId,userId});
+            } catch (error) {
+                 console.log('error while calling the remove from cart API',error)   
+            }
+        }
+         
+        export const PlaceOrder =async(total,userId)=>{
+
+            try {
+               return await axios.post(`${URL}/placeOrder/${userId}`,{total})
+              
+                
+            } catch (error) {
+                console.log('error while calling the place order API',error)
+            }
+        }
+        
+        export const verifyPayment= async(response)=>{  
+            try {
+                return axios.post(`${URL}/payment/verify`,response)
+            } catch (error) {
+                console.log('error while calling the verify payment API', error)
+            }
+        }
+
+        export const buyProducts = async({userId,allproducts,total,orderId})=> {
+            
+            
+            try {
+                    
+                return await axios.post(`${URL}/orders`,({userId,allproducts,total,orderId}))
+
+            } catch (error) {
+                console.log('error while calling the buyProducts API', error)
+            }
+
+        }
+       
+       
