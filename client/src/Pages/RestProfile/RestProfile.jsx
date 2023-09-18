@@ -38,7 +38,8 @@ export const RestProfile = () => {
     
     const AddFood = async(e)=>{
         e.preventDefault()
-        const {response} = await CreateProduct({userId,name:formdata.name,price:formdata.price,quantity:formdata.quantity,description:formdata.description,image:formdata.image})
+        const response = await CreateProduct({userId,name:formdata.name,price:formdata.price,quantity:formdata.quantity,description:formdata.description,image:formdata.image})
+        console.log(response)
         if(response){
           if(response.data.error){
             toast.error(response.data.error)
@@ -48,7 +49,7 @@ export const RestProfile = () => {
           }
           else if(response.data.success){
             toast.success(response.data.success)
-            navigate('/')
+            navigate('/ShowAll')
             
           }
           

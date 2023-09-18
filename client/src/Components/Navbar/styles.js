@@ -7,14 +7,17 @@ export const Nav = styled(Box)((theme)=>({
     
     display:'flex',
     width:"100vw",
-    justifyContent:'space-between',
+    justifyContent:'left',
     padding:"5px 13px",
     alignItems:'center',
     position:'static',
     background:"white",
     boxShadow:'3px 3px 6px 3px #888888',
     "& div > a":{
+       fontSize:"14px",
        textDecoration:'none',
+       padding:'0 1rem',
+       
     }
    
 }))
@@ -25,7 +28,7 @@ export const LogoContainer = styled(Box)((theme)=>({
 
     "img" : {
         width:"9rem",
-
+        
     }
     
 }))
@@ -44,25 +47,29 @@ export const SearchBar = styled(Box)((theme)=>({
 }))
 export const Offers = styled(Box)((theme)=>({
        display:'flex',
-       justifyContent:'center'
+       justifyContent:'center',
+      
 
 }))
 
 export const SignIn = styled(Box)((theme)=>({
-       display:'flex'
-
+       display:'flex',
+       
 }))
 
 export const Help = styled(Box)((theme)=>({
 
-       display:'flex'
+       display:'flex',
+       
 }))
 export const Cart = styled(Box)((theme)=>({
 
-       display:'flex'
+       display:'flex',
+       
 }))
 export const Seller = styled(Box)((theme)=>({
        display:"flex",
+      
       
        "& a":{
          display:'flex',
@@ -72,6 +79,8 @@ export const Seller = styled(Box)((theme)=>({
        }
 }))
 export const Logout = styled(Box)((theme)=>({
+       display:'flex',
+       justifyContent:'right'
 
 }))
 

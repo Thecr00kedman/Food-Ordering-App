@@ -3,28 +3,47 @@ import { Box, Typography ,Button} from "@mui/material"
 import { ProductContainer,BoxContainer,ImageContainer,ButtonContainer } from "./styles"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { GetRestaurant } from "../../Redux/Store"
+import { GetProducts } from "../../Redux/Store"
+import { DeleteProduct } from "../../Redux/Actions"
+import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 
-export const ShowAll = () =>
 
-
-{
-
+export const ShowAll = () =>{
+const navigate = useNavigate()
 const dispatch= useDispatch();
-const {id} = localStorage.getItem('UserId')
- 
+const id = localStorage.getItem('UserId')
+
    useEffect(()=>{     
-    dispatch(GetRestaurant(id))
+    
+    const fetchAll=async()=>{
+        dispatch(GetProducts(id))
+    }; fetchAll()
 
 },[dispatch])
-   const data = useSelector((state)=>state.restaurants.Singlerestaurant)
-//    console.log(data)
-   
-   
+   const data = useSelector((state)=>state.restaurants.Products)
+
    
 
-  
+   const Delete =async(productId,id)=>{
+    const response= await DeleteProduct({productId,id})
+    
+    if(response){
+        if(response.data.error){
+            toast.error(response.data.error)
+        }
+        else(response.data.success)
+        {
+            toast.success(response.data.success)
+            navigate('/RestProfile')
+
+        }
+    }
+    else{
+        toast.warn('something went wrong')
+    }
+ }
 
     return(
         <div>
@@ -36,9 +55,7 @@ const {id} = localStorage.getItem('UserId')
              
                 <ImageContainer><Box style={{width:"15rem",height:'10rem',overflow:'hidden'}}><img src={item.image} alt="Product image" /></Box><Typography>{item.name}</Typography></ImageContainer>
                 <Box style={{flex:1}}><Typography>{item.description}</Typography></Box>
-                <ButtonContainer><Button variant="contained">Edit</Button><Button variant="contained">Delete</Button></ButtonContainer>
-                   
-   
+                <ButtonContainer><Button variant="contained"onClick={()=>navigate(`/edit/${item._id}`)}>Edit</Button><Button variant="contained" onClick={()=>Delete(item._id,id)}>Delete</Button></ButtonContainer>
                </ProductContainer>
                
             ))}

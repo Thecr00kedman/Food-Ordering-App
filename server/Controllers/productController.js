@@ -118,7 +118,7 @@ export const AddFoods = async(req,res)=> {
             
             const restaurantname= restaurant.name
             const restaurantlandmark=restaurant.landmark
-            // const restId=restroId
+    
             const CartProduct = {restroId,productId,productName,productQuantity,productPrice,restaurantname,restaurantlandmark,productImage}
             user.cart.push(CartProduct)
             await user.save()
@@ -131,6 +131,111 @@ export const AddFoods = async(req,res)=> {
         res.json('error while calling the add to cart api',error)
     }
 }
+
+export const Getproducts = async(req,res)=>{
+    const {id} = req.params
+    try {
+        const restaurant= await Partner.findById(id)
+        if(!restaurant){
+           return res.json({error:"no restaurant found"})
+        }
+        else{
+        return res.json({success:"products found",products:restaurant.products})
+
+        }
+    } catch (error) {
+        res.json('error while calling the GetProducts API', error)
+    }
+}
+
+export const editProduct = async(req, res)=>{
+          const {productId,id} = req.params
+          
+         console.log(productId,id)
+    try {
+        const restaurant= await Partner.findById(id)
+        if(!restaurant){
+            return res.json({error:'No restaurants found'})
+        }
+        else{
+            const product = await restaurant.products.find((product)=>product._id.equals(productId))
+            if(!product){
+                return res.json({error:'No products found'})
+            }
+            else{
+                return res.json({success:"Products",product})
+            }
+        }
+       
+    } catch (error) {
+        console.log(error)
+        res.status(500).json('error while calling the Edit products API', error)
+    }
+}
+
+export const updateproduct =async(req,res)=>{
+    const {id,productId}=req.params
+    const {edited}= req.body
+    console.log(edited.name,edited.description,productId,id)
+    try {
+        const restaurant = await Partner.findById(id)
+        
+    if(!restaurant){
+        return res.json({error:'Restaurant not found'})
+    }
+    else{
+        const product = await restaurant.products.find((product)=>product._id.equals(productId))
+        if(!product){
+            return res.json({error:'product not found'})
+        }
+        else{
+            product.name= edited.name;
+            product.description=edited.description
+           
+            if(product.name <6 || product.description<10){
+                return res.json({error:"product details should be more than 5 characters"})
+            }else{
+                await restaurant.save();
+                console.log(restaurant.products)
+                return res.json({succes:'Details Updated Successfully'})
+            }
+        }  
+    }
+    } catch (error) {
+        console.log(error)
+        res.status(500).json("error while calling  the update product api",error)
+    }
+}
+
+export const deleteProduct = async(req,res)=>{
+    
+    const {productId}= req.params
+    const {id} = req.body
+    
+    try {
+            const restaurant = await Partner.findById(id)
+       if(!restaurant){
+                return res.json('Restaurant not found')
+            }
+        else{    
+            const product = await restaurant.products.find(product=>product._id.equals(productId))
+                if(!product){
+                    return res.json('product not found')
+                }
+                else
+                { 
+                    restaurant.products = restaurant.products.filter(product => !product._id.equals(productId));
+                    await restaurant.save();
+                    return res.json({success:'product removed'})
+                }}
+        }
+ 
+     catch (error) {
+        console.log(error)
+        res.status(500).json('error while calling the delete product API',error)
+    }
+}
+
 export const ShowCartProducts = async(req,res)=> {
     try {
         const {userId}= req.params
@@ -317,7 +422,10 @@ export const verify =async(req,res)=> {
     
     
     export const restOrders = async (req, res) => {
-        const { restId } = req.params;
+
+        const {restId}= req.params
+        
+        
         try {
             const restaurant = await Partner.findById(restId); // Use your Partner model to find the restaurant
     

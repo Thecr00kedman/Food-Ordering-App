@@ -31,7 +31,7 @@ export const PreviousOrder = () =>{
           <Box style={{marginTop:"5rem"}}><Typography variant='h4'>Previous Orders</Typography>
           {data?.order?.map((item)=>(
             
-            <OrderContainer>
+            <OrderContainer key={item.orderId}>
                  
             <Orders>
                 <Left>
@@ -40,8 +40,7 @@ export const PreviousOrder = () =>{
             <Right>
                <Box><Typography>restaurant:</Typography>&nbsp;&nbsp;{item.restname}</Box>
                <Box><Typography>place:</Typography>&nbsp;&nbsp;{item.landmark}</Box>
-               <Box><Typography>order:</Typography>&nbsp;&nbsp;{item.orderId}</Box>
-               
+               <Box><Typography>order:</Typography>&nbsp;&nbsp;{item.orderId}</Box>    
             </Right>
         </Orders>
         <hr />

@@ -24,9 +24,9 @@ export const RestaurantPage = () => {
     
     const userId = localStorage.getItem('userId') //this is user Id
     const id= useParams(); //this is restaurant id
-
     const dispatch= useDispatch();
     const restId= useParams(); 
+    
     const restroId= restId.id
 
     useEffect(()=>{     
@@ -36,13 +36,14 @@ export const RestaurantPage = () => {
 
     const navigate = useNavigate();
     const data = useSelector((state)=>state.restaurants.Singlerestaurant)
+
     const [toggle,setToggle] = useState(false)
     
 
     const AddproductstoCart = async({productId,productName,productQuantity,productPrice,productImage,userId,restroId})=>{
 
        const response= await AddToCart({productId,productName,productQuantity,productPrice,productImage,userId,restroId})
-       console.log(response)
+      
        if(response){
          if(response.data.error){
             toast.error(response.data.error)

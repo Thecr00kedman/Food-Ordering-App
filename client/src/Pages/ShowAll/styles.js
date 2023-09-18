@@ -10,6 +10,14 @@ export const ProductContainer = styled(Box)(({theme})=>({
     
     
     }))
+
+    export const BoxInput = styled(Box)(({theme})=>({
+        display:'flex',
+        flex:1,
+         margin:'1rem 1rem 0 1rem',
+        
+    
+    }))
 export const BoxContainer = styled(Box)(({theme})=>({
     display:'flex',
     alignItems:'center',

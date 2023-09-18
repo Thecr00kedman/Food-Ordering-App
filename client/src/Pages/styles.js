@@ -45,22 +45,13 @@ export const Left= styled(Box)(({theme})=>({
     '& >div':{
        padding:'1rem 1rem' 
     }
-    
-    
-      
-
-
-    
+  
 
 }))
 export const Right= styled(Box)(({theme})=>({
     padding:'0.5rem 1rem',
     width:"40%",
    
-    
-
-    
-
 }))
 export const SellerHead= styled(Box)(({theme})=>({
 display:'flex',

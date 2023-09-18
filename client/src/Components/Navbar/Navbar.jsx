@@ -73,8 +73,10 @@ export const Navbar = () => {
                 }
             </SignIn>
             <Seller>
-{               account?<Link to={'/PreviousOrder'}><FastfoodIcon/>&nbsp;&nbsp;<Typography>Orders</Typography></Link>: <Link to={"/RestSignup"}style={partner ?{display:'none'} :{display:'flex',textDecoration:'none',color:'Black'}}><StorefrontIcon/>&nbsp;&nbsp;Become a Restaurant</Link>
-}            </Seller>
+                {
+               (account)?<Link to={'/PreviousOrder'}><FastfoodIcon/>&nbsp;&nbsp;<Typography>Orders</Typography></Link>:(!partner || account)?<Link to={"/RestSignup"} style={{display:'flex',textDecoration:'none',color:'Black'}}><StorefrontIcon/>&nbsp;&nbsp;Become a Restaurant</Link>:<Link to={'/PreviousOrder'} style={{display:'none'}}><FastfoodIcon/>&nbsp;&nbsp;<Typography>Orders</Typography></Link>
+                }            
+            </Seller>
             <Cart>
                 {
                     account ?<Link style={ {display:'flex',textDecoration:'none',color:'Black'}} to={'/Cart'}><AddShoppingCartIcon/>&nbsp;&nbsp;<Typography>Cart</Typography></Link> 

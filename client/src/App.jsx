@@ -15,6 +15,7 @@ import Cart from './Pages/Cart/Cart';
 import PreviousOrder from './Pages/Previous Orders/PreviousOrders';
 import RestaurantOrder from './Pages/RestaurantPage/RestaurantOrder';
 import ShowAll from './Pages/ShowAll/ShowAll';
+import { Edit } from './Pages/ShowAll/Edit';
 
 
 
@@ -62,6 +63,7 @@ function App() {
              <Route path='/PreviousOrder' element={<PreviousOrder/>} />
              <Route path='/RestaurantOrder' element={<RestaurantOrder/>} />
              <Route path='/ShowAll' element={<ShowAll/>}/>
+             <Route path='/edit/:productId' element={<Edit/>}/>
 
          </Routes>
   </BrowserRouter>

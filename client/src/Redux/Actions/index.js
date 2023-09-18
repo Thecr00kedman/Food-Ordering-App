@@ -61,6 +61,26 @@ const URL= 'http://localhost:8000';
               }
         }
 
+        //for editing the product details
+        export const updateProduct=async({edited,productId,id})=>{
+            console.log(edited,productId,id)
+            try {
+                return await axios.post(`${URL}/edit/${id}/${productId}`,{edited})
+            } catch (error) {
+                console.log('error while calling the update product details',error)
+            }
+        }
+        
+        export const DeleteProduct =async({productId,id})=>{
+
+            try {
+                return await axios.put(`${URL}/deleteProduct/${productId}`,{id})
+            } catch (error) {
+                console.log("error while calling the delete produdt API",error)
+            }
+        }
+        
+
         export const AddToCart = async({productId,productName,productQuantity,productPrice,productImage,userId,restroId})=> {
 
             try {
