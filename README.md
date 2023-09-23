@@ -27,6 +27,7 @@ This sample Food Ordering App was built using the MERN (MongoDB, Express.js, Rea
 - Material-UI: UI library for designing the user interface.
 - Axios: HTTP client for making API requests.
 - Redux Thunk: Middleware for handling asynchronous actions.
+- SwaggerUi: For API documentation.
 
 ## Getting Started
 
