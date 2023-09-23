@@ -43,7 +43,6 @@ export const RestSignup=()=> {
     const Submituser= async()=> {
             
         const response = await addrestaurant(restsignup)
-        console.log(response)
         if(response){
             if(response.data.error){
                 toast.error(response.data.error)

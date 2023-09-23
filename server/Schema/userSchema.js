@@ -19,6 +19,10 @@ export const userschema = mongoose.Schema({
             min:5
             
            },
+           role:{
+            type:String,
+            default:'user'
+           },
            cart:{type:Array,ref:"Partner"},
            order:{type:Array,ref:"Order"}
 

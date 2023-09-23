@@ -11,7 +11,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 export const RestaurantOrder=()=>{
     const dispatch= useDispatch();
     const restId= localStorage.getItem('UserId')
-    // console.log(restId)
+
     useEffect(()=>{
         const fetchpastOrder= async()=>{
           dispatch(getRestOrder(restId))

@@ -13,7 +13,7 @@ export const Footer = () =>{
      return(
         <Container>
             <Grid container rowSpacing={4}> 
-                 <Grid item lg={3} xs={12} md={3} sm={6} >
+            <Grid item lg={3} xs={12} md={4} sm={6}>
                                       
                                       <BoxContainer>
                                       <Typography variant="h5">ABOUT US</Typography>
@@ -30,7 +30,7 @@ export const Footer = () =>{
                                     
                   </Grid>
                   
-               <Grid item lg={3} xs={12} md={2} sm={6}>
+                  <Grid item lg={3} xs={12} md={4} sm={6}>
                                         <BoxContainer>
                                             <Typography variant="h5">FOR RESTAURANTS</Typography>
                                     {
@@ -43,7 +43,7 @@ export const Footer = () =>{
                                     </BoxContainer>
                 </Grid>
                 
-                <Grid item lg={3} xs={12} md={2} sm={6}>
+                <Grid item lg={3} xs={12} md={4} sm={6}>
                                         <BoxContainer>
                                             <Typography variant="h5">LEARN MORE</Typography>
                                     {
@@ -55,7 +55,7 @@ export const Footer = () =>{
                 </Grid>
                 
 
-                <Grid item lg={3} xs={12} md={2} sm={6}>
+                <Grid item lg={3} xs={12} md={4} sm={6}>
                                      <BoxContainer>
                                       <Typography variant="h5">SOCIAL</Typography>
                                       {

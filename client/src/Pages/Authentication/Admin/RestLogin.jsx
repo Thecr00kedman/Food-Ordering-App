@@ -41,9 +41,11 @@ export const Restlogin=()=> {
             }
             else if(response.data.success){
                 toast.success(`${response.data.success} Welcome ${response.data.name}`)
+                console.log(response)
                 setCookies('access_token',response.data.token)
                 localStorage.setItem("UserId",response.data.id)
                 localStorage.setItem("username",response.data.name)
+                localStorage.setItem("role",response.data.role)
                 setRestlogin(restlogin)
                 setPartner(response.data.name)
                 navigate('/')

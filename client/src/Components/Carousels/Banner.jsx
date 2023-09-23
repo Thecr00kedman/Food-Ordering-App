@@ -9,7 +9,7 @@ export const Banner = () => {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 3,
+      items: 1,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -31,12 +31,13 @@ export const Banner = () => {
 
      <Typography variant="h5" style={{textAlign:"left",margin:"1rem 0 0 1.5rem",fontWeight:'700'}}>Best offers for you</Typography>   
     <Carousel
-      swipeable={false}
+      swipeable={true}
       autoPlaySpeed={1000}
+      infinite={true}
+
       draggable={true}
       responsive={responsive}
       ssr={true} // means to render carousel on server-side.
-      infinite={true}
       keyBoardControl={true}
       customTransition="transform 0.5s ease-out"
       transitionDuration={500}

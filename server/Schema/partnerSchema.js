@@ -44,6 +44,10 @@ export const partnerschema = mongoose.Schema({
                required:'true',
                min:5,
           },
+          role:{
+               type:String,
+               default:'restaurant'
+          },
           products:{type:Array,ref:"Products"},
           restorder:{type:Array,ref:"RestOrder"}
           

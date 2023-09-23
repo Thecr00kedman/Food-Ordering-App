@@ -63,33 +63,36 @@ export const ShowAll = async(req,res) =>{
 
    try {
     const AllProducts = await Partner.find({})
-    return res.json(AllProducts)
+    return res.status(200).json(AllProducts)
+
   
    } catch (error) {
-    res.json("error while calling the Show All api")
+    res.status(500).json("error while calling the Show All api")
     
    }
     
 
 }
-    
+  
+
+//shows the particular restaurant to the user
 export const Getrest = async(req,res)=>{
      
     const {id} = req.params;
     
     if (!id || !isValidObjectId(id)) {
-        return res.status(400).json({ error: 'Invalid restaurant ID' });
+        return res.status(500).json({ error: 'Invalid restaurant ID' });
     }
     
 
     try {
         const restaurant = await Partner.findById(id);
-        return res.json(restaurant);
+        return res.status(200).json(restaurant);
         
   
     } catch (error) {
         console.log(error)
-        res.json('error while calling the GetRest API',error)
+        res.status(500).json('error while calling the GetRest API',error)
         
     }
 }
@@ -132,6 +135,8 @@ export const AddFoods = async(req,res)=> {
     }
 }
 
+
+//for getting the products of a restaurant for a particular restaurant in restaurant's side
 export const Getproducts = async(req,res)=>{
     const {id} = req.params
     try {
@@ -148,7 +153,8 @@ export const Getproducts = async(req,res)=>{
     }
 }
 
-export const editProduct = async(req, res)=>{
+//for getting the details of particular product of restaurant on the edit page
+export const getProductDetails = async(req, res)=>{
           const {productId,id} = req.params
           
          console.log(productId,id)
@@ -163,7 +169,7 @@ export const editProduct = async(req, res)=>{
                 return res.json({error:'No products found'})
             }
             else{
-                return res.json({success:"Products",product})
+                return res.status(200).json({success:"Products",product})
             }
         }
        
@@ -196,8 +202,7 @@ export const updateproduct =async(req,res)=>{
                 return res.json({error:"product details should be more than 5 characters"})
             }else{
                 await restaurant.save();
-                console.log(restaurant.products)
-                return res.json({succes:'Details Updated Successfully'})
+                return res.status(200).json({succes:'Details Updated Successfully'})
             }
         }  
     }
@@ -212,7 +217,12 @@ export const deleteProduct = async(req,res)=>{
     const {productId}= req.params
     const {id} = req.body
     
+    
     try {
+        if (!id || !isValidObjectId(id)) {
+            return res.status(500).json({ error: 'Invalid ID' });
+        }
+        else{
             const restaurant = await Partner.findById(id)
        if(!restaurant){
                 return res.json('Restaurant not found')
@@ -226,8 +236,10 @@ export const deleteProduct = async(req,res)=>{
                 { 
                     restaurant.products = restaurant.products.filter(product => !product._id.equals(productId));
                     await restaurant.save();
-                    return res.json({success:'product removed'})
+                    return res.status(200).json({success:'product removed'})
                 }}
+        }
+            
         }
  
      catch (error) {
@@ -244,13 +256,13 @@ export const ShowCartProducts = async(req,res)=> {
             return res.json({error:'Login to Add to carts'});
         }
         else{
-              return res.json({success:"Products found",cart: user?.cart});
+              return res.status(200).json({success:"Products found",cart: user?.cart});
           
 
         }
     } catch (error) {
-        
-        res.json('error while calling the Show cart products API')
+        console.log(error)
+        res.status(500).json('error while calling the Show cart products API')
     }
 }
 
@@ -272,13 +284,14 @@ export const RemoveProduct =async(req,res) =>{
         else{
             user.cart.splice(productIndex,1)
             await user.save();
-            return res.json({success:'product removed'})
+            return res.status(200).json({success:'product removed'})
         }
       }
 
         
     } catch (error) {
-        res.json('error while calling the remove product API',error)
+        console.log(error)
+        res.status(500).json('error while calling the remove product API',error)
         
     }
 }
@@ -371,12 +384,12 @@ export const verify =async(req,res)=> {
                 });
                 user.order.push(...orders);
                 await user.save();
-                return res.json({success:"Order Placed Successfully"})
+                return res.status(200).json({success:"Order Placed Successfully"})
 
             }
         }   
          catch (error) {
-          res.json('error while calling the old Order API', error)   
+          res.status(500).json('error while calling the old Order API', error)   
         }
     }
 
@@ -409,18 +422,18 @@ export const verify =async(req,res)=> {
                 return res.json({error:'please login to get your order details'})
             }
             else{
-                return res.json({success:'success',order:user?.order})
+                return res.status(200).json({success:'success',order:user?.order})
                 
             }
         } catch (error) {
-            res.status(501).json('error while calling show past order API',error)
+            res.status(500).json('error while calling show past order API',error)
         }
     }
 
 
 
     
-    
+//for getting the orders of  restaurant  
     export const restOrders = async (req, res) => {
 
         const {restId}= req.params
@@ -468,7 +481,7 @@ export const verify =async(req,res)=> {
     
                 await restaurant.save(); // Correct the method to save the restaurant
     
-                return res.json({ success: 'Found orders', order: restaurant?.restorder });
+                return res.status(200).json({ success: 'Found orders', order: restaurant?.restorder });
             }
         } catch (error) {
             console.error(error);

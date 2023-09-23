@@ -12,7 +12,7 @@ export const Right = styled(Box)(({theme})=>({
         flexDirection:'row',
         padding:'0.5rem',
         "& > p":{
-            color: "#696b79" 
+            color: "#696b79",
         }
     },
 }))

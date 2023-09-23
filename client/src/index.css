@@ -35,21 +35,14 @@
   margin:1rem;
   display:grid;
   grid-template-columns: repeat(4,1fr);
-  padding: 0 5rem;
-  margin:1rem 2rem;
   gap: 0.8rem;
 }
+
 .ItemsContainer:hover{
  transform: scale(0.9);
  transition: all 0.05s ease 0s;
  overflow: hidden;
 }
-/* .subheader{
-  display: flex;
-} */
-
-
-
 
 .SingleRest{
   width: 100%;
@@ -114,7 +107,7 @@
      display: flex;
      flex-direction: row;
      align-items: center;
-     height: 50px;
+     height: 5rem;
      width: 100%;
      padding: 3rem 1rem;
      overflow-y: hidden;
@@ -124,7 +117,7 @@
   
 }
 .Footerhead>span{
-  font-size: 13px;
+  
   color: #93959f;
 }
 .Subfooter{

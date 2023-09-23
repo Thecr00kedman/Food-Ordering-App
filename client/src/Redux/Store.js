@@ -20,8 +20,7 @@ const initialState ={
 export const GetAllProducts = createAsyncThunk('restaurants/GetAllProducts', async() => {
 
     try {
-        const {data} = await axios.get(`${URL}/All`)
-       
+        const {data} = await axios.get(`${URL}/All`)  
     return data;
 }
     

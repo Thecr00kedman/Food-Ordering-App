@@ -42,9 +42,6 @@ export const addUser = async(req,res) => {
 }
 
 export const userlogin =async(req,res) => {
-    
-
-          
     try {
         const {email,password} = req.body;
     const user = await User.findOne({email})
@@ -57,6 +54,7 @@ export const userlogin =async(req,res) => {
         }
         else if(!user){
             return res.json({error:"user doesn't exist"})
+
         }
 
         else {
@@ -71,13 +69,15 @@ export const userlogin =async(req,res) => {
          if(!isValid){
             return res.json({warning:"Password is incorrect"})
          }
+         
          else{
-            const token = jwt.sign({email:user.email, id:user._id},SECRET_KEY,{expiresIn:"5d"})
-            return res.json({success:"Logged in Successfully", token:token,userId:user._id,email:user.email,name:user.name})
+            const token = jwt.sign({email:user.email, id:user._id,role:user.role},SECRET_KEY,{expiresIn:"5d"})
+            return res.json({success:"Logged in Successfully", token:token,userId:user._id,email:user.email,name:user.name,role:user.role})
          }
         }
         
     } catch (error) {
+        console.log(error)
         res.json("error while logging in",error)
 
         
@@ -107,7 +107,7 @@ export const addpartner = async(req, res) => {
             const newPartner = new Partner({ name, email,image,address,landmark,origin,categories, password: securepassword });
 
             await newPartner.save();
-            return res.status(201).json({ success: 'Partner added successfully' });
+            return res.status(200).json({ success: 'Partner added successfully' });
         }
     } catch (error) {
         res.status(500).json('Error while calling the add partner API', error);
@@ -143,8 +143,8 @@ export const loginPartner =async(req,res)=>{
                 }
                 else{
        
-                   const token = jwt.sign({email:partner.email, id:partner._id},SECRET_KEY,{expiresIn:"5d"})
-                    return res.json({success:"Logged in successfully",name:partner.name,email:partner.email,token:token,id:partner._id})
+                   const token = jwt.sign({email:partner.email, id:partner._id,role:partner.role},SECRET_KEY,{expiresIn:"5d"})
+                    return res.json({success:"Logged in successfully",name:partner.name,email:partner.email,token:token,id:partner._id,role:partner.role})
                 }
 
     } catch (error) {

@@ -20,7 +20,7 @@ export const Container =styled(Box)(({theme})=>({
     textAlign:"center",
     textDecoration:'none',
     color:'black',
-    width:'1280px',
+    width:'100%',
     padding:'1rem 2rem'
 
 }))

@@ -39,8 +39,6 @@ import { useGlobalContext } from "../../Context/Context";
         
          
         const response = await getUser(login)
-         console.log(response)
-
           if (response) {
             if(response.data.error){
                 toast.error(response.data.error)
@@ -52,6 +50,7 @@ import { useGlobalContext } from "../../Context/Context";
                 toast.success(`${response.data.success},Welcome:${response.data.name}`)
                 setCookies("access_token",response.data.token)
                 localStorage.setItem("userId",response.data.userId)
+                localStorage.setItem("role",response.data.role)
                 localStorage.setItem("name",response.data.name)
                 setLogin(login)
                 setAccount(response.data.name)

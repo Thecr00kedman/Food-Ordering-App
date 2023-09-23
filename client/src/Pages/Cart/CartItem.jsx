@@ -18,10 +18,11 @@ import { useNavigate } from "react-router-dom";
 
 
 export const CartItem = () => {
-
+    
+    const data = useSelector((state)=>state.restaurants.cart)
     const navigate= useNavigate(); 
     const [allproducts,setAllproducts] =useState([])
-
+    const[ischanged,setIschanged] = useState(data)
     const userId = localStorage.getItem('userId')
     const {total} = useGlobalContext();
     
@@ -31,27 +32,21 @@ export const CartItem = () => {
              dispatch(GetCartProducts(userId));
             
         };
-        fetchData();
+        fetchData();       
+    },[ischanged])
     
-
-        
-    },[userId,dispatch])
-    
-    const data = useSelector((state)=>state.restaurants.cart)
-    console.log(data?.cart)
-   
     
     const RemoveProduct =async({productId,userId})=> {
-        
-       const response= await RemoveFromCart({productId,userId})
+       
+        const response= await RemoveFromCart({productId,userId})
+
        if(response){
         if(response.data.error){
             toast.error(response.data.error)
         }
         else(response.data.success)
-        {
+        {   
             toast.success(response.data.success)
-            
         }
        }
     }

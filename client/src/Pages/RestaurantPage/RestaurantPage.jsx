@@ -26,6 +26,7 @@ export const RestaurantPage = () => {
     const id= useParams(); //this is restaurant id
     const dispatch= useDispatch();
     const restId= useParams(); 
+    const[cartItem,setCartItem]= useState();
     
     const restroId= restId.id
 
@@ -88,8 +89,7 @@ export const RestaurantPage = () => {
                                          data.products.map((item)=>(
                                              
                                                    <Product key={item._id}>
-                                                   
-                                                   
+ 
                                                    <Left>
                                                             <div><SellerHead><RadioButtonCheckedIcon sx={{fontSize:'14px',color:'green'}}/>&nbsp;<StarIcon sx={{color:"orange",fontSize:'15px'}}/><Typography fontSize={"small"} color={"orange"}>Bestseller</Typography></SellerHead>
                                                             <div><Typography>{item.name}</Typography></div>
