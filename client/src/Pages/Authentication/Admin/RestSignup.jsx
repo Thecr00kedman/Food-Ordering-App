@@ -70,13 +70,13 @@ export const RestSignup=()=> {
             <Typography variant="h2">Partner With Us</Typography>
 
         <form>
-            <FormInput><AccountCircleIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="name" variant="outlined" name="name" type="text" /></FormInput>
-            <FormInput><PersonOutlineIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="email" variant="outlined" name="email" type="email" /></FormInput>
-            <FormInput><LockIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="Password" variant="outlined" name="password" type="password" /></FormInput>
-            <FormInput><StoreIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="landmark" variant="outlined" name="landmark" type="text" /></FormInput>
-            <FormInput><FmdGoodIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="address" variant="outlined" name="address" type="text" /></FormInput>
-            <FormInput><CategoryIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="categories" variant="outlined" name="categories" type="text" /></FormInput>
-            <FormInput><LocationSearchingIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="origin" variant="outlined" name="origin" type="text" /></FormInput>
+            <FormInput><AccountCircleIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} placeholder="enter your name" name="name" type="text" /></FormInput>
+            <FormInput><PersonOutlineIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} placeholder="enter your email" name="email" type="email" /></FormInput>
+            <FormInput><LockIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} placeholder="enter your password" name="password" type="password" /></FormInput>
+            <FormInput><StoreIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} placeholder="enter your landmark" name="landmark" type="text" /></FormInput>
+            <FormInput><FmdGoodIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} placeholder="enter your address" name="address" type="text" /></FormInput>
+            <FormInput><CategoryIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} placeholder="enter your categories" name="categories" type="text" /></FormInput>
+            <FormInput><LocationSearchingIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} placeholder="enter the origin" name="origin" type="text" /></FormInput>
             <FileBase64
             fullWidth onChange={(e)=>handleChange(e)} required multiple={false} onDone={({base64})=>setRestsignup({...restsignup,image:base64})}  placeholder="Select a Photo"
             type="file" id="file-upload" name="image" variant="standard" accept='.jpeg, .png, .jpg'

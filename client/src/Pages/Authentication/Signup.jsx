@@ -62,9 +62,9 @@ export const Signup = () => {
         <div style={{marginTop:'6%'}}>
           <Typography variant='h2'>Register</Typography>
         <form>
-            <FormInput><AccountCircleIcon/><TextField onChange={handleChange} style={{width:"50%"}} label="name" variant="outlined" name="name" type="text" /></FormInput>
-            <FormInput><PersonOutlineIcon/><TextField onChange={handleChange} style={{width:"50%"}} label="email" variant="outlined" name="email" type="email" /></FormInput>
-            <FormInput><LockIcon/><TextField onChange={handleChange} style={{width:"50%"}} label="Password" variant="outlined" name="password" type="password" /></FormInput>
+            <FormInput><AccountCircleIcon/><TextField onChange={handleChange} style={{width:"50%"}} placeholder="enter your name" name="name" type="text" /></FormInput>
+            <FormInput><PersonOutlineIcon/><TextField onChange={handleChange} style={{width:"50%"}} placeholder="enter your email" name="email" type="email" /></FormInput>
+            <FormInput><LockIcon/><TextField onChange={handleChange} style={{width:"50%"}} placeholder="enter your password" name="password" type="password" /></FormInput>
         </form>
             <ButtonContainer><Button onClick={SubmitLogin}variant='contained' size="large" style={{width:"15rem"}}>Sign Up</Button></ButtonContainer>
             <Link  style={{textDecoration:'none',color:'#1976d2'}} to={'/Login'}>Already a member?&nbsp;Login</Link>

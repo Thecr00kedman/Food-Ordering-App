@@ -45,48 +45,45 @@ export const Navbar = () => {
     return(
 
         <Nav>
-            {account?<LogoContainer>
-            <Link to={'/'}><img src={Logo} alt="Logo" /></Link>
-            </LogoContainer>:partner?<LogoContainer>
-            <Link to={'/ShowAll'}><img src={Logo} alt="Logo" /></Link>
-            </LogoContainer>:<LogoContainer>
-            <Link to={'/'}><img src={Logo} alt="Logo" /></Link>
-            </LogoContainer>}
+           <LogoContainer>
+            <Box sx={{width:"9rem"}}><Link to={'/'}><img src={Logo} alt="Logo" /></Link></Box>            
+            </LogoContainer>
+        
             
             <SearchBar>
              {
         
                account?<Box><input type="text" placeholder="search your food here"/>&nbsp;&nbsp;<SearchIcon sx={{cursor:'pointer'}}/></Box> 
                 :
-                 (partner ?<Link to={'/ShowAll'}><HomeMaxIcon/>&nbsp;&nbsp;Show All</Link>:<Box><input type="text" placeholder="search your food here"/><SearchIcon/></Box>)
+                 (partner ?<Link to={'/ShowAll'}><HomeMaxIcon/>&nbsp;&nbsp;<span>Show All</span></Link>:<Box><input type="text"  placeholder="search your food here"/><SearchIcon/></Box>)
 
              }
             </SearchBar>
             
             <Offers>
-            {partner ?<Link to={'/RestProfile'}><AddIcon/>&nbsp;&nbsp;Add Dishes</Link>:<Link ><LocalOfferIcon/>&nbsp;&nbsp;<Typography>Offers</Typography></Link>
+            {partner ?<Link to={'/RestProfile'}><AddIcon/>&nbsp;&nbsp;<span>Add Product</span></Link>:<Link ><LocalOfferIcon/>&nbsp;&nbsp;<span>Offers</span></Link>
             }    </Offers>
            
             <Help>
-               <Link><CatchingPokemonIcon/>&nbsp;&nbsp;<Typography>Help</Typography></Link>
+               <Link><CatchingPokemonIcon/>&nbsp;&nbsp;<span>Help</span></Link>
             </Help>
             <SignIn>
                 
                 {
-                (account) ?<Profile account={account} setAccount={setAccount} />:partner?(<Profile partner={partner} setPartner={setPartner}/>):<Link to={'/Login'}><PersonIcon/>&nbsp;&nbsp;<Typography>Sign in</Typography></Link>
+                (account) ?<Profile account={account} setAccount={setAccount} />:partner?(<Profile partner={partner} setPartner={setPartner}/>):<Link to={'/Login'}><PersonIcon/>&nbsp;&nbsp;<span>Sign in</span></Link>
                 }
             </SignIn>
             <Seller>
                 {
-               (account)?<Link to={'/PreviousOrder'}><FastfoodIcon/>&nbsp;&nbsp;<Typography>Orders</Typography></Link>:(!partner || account)?<Link to={"/RestSignup"}><StorefrontIcon/>&nbsp;&nbsp;<Typography>Partner</Typography></Link>:<Link to={'/PreviousOrder'} style={{display:'none'}}><FastfoodIcon/>&nbsp;&nbsp;<Typography>Orders</Typography></Link>
+               (account)?<Link to={'/PreviousOrder'}><FastfoodIcon/>&nbsp;&nbsp;<span>Orders</span></Link>:(!partner || account)?<Link to={"/RestSignup"}><StorefrontIcon/>&nbsp;&nbsp;<span>Partner</span></Link>:<Link to={'/PreviousOrder'} style={{display:'none'}}><FastfoodIcon/>&nbsp;&nbsp;<span>Orders</span></Link>
                 }            
             </Seller>
             <Cart>
                 {
-                    account ?<Link to={'/Cart'}><AddShoppingCartIcon/>&nbsp;&nbsp;<Typography>Cart</Typography></Link> 
+                    account ?<Link to={'/Cart'}><AddShoppingCartIcon/>&nbsp;&nbsp;<span>Cart</span></Link> 
                     :
-                    (partner? <Link to={'/RestaurantOrder'}><FoodBankIcon/>&nbsp;&nbsp;<Typography>Orders</Typography></Link>
-                    :<Link to={'/Cart'}><AddShoppingCartIcon/>&nbsp;&nbsp;<Typography>Cart</Typography></Link>
+                    (partner? <Link to={'/RestaurantOrder'}><FoodBankIcon/>&nbsp;&nbsp;<span>Orders</span></Link>
+                    :<Link to={'/Cart'}><AddShoppingCartIcon/>&nbsp;&nbsp;<span>Cart</span></Link>
                     )
                 }            
             </Cart>

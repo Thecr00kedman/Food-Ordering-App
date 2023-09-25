@@ -44,7 +44,7 @@ export const Edit = () => {
     <div>
       <Navbar />
       <Box>
-        <Typography variant="h4">All Products</Typography>
+        <Typography variant="h4">Update product</Typography>
       </Box>
      
         <BoxContainer>

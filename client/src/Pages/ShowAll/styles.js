@@ -52,7 +52,6 @@ export const ButtonContainer = styled(Box)(({theme})=>({
     flexDirection:'column',
     justifyContent:"space-between",
       "& button":{
-        // width:'100%'
         margin:'5px',
       }
     

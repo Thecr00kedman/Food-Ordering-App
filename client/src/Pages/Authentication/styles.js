@@ -37,3 +37,9 @@ export const ButtonContainer = styled(Box)((theme)=>({
          
          
 }))
+export const ContainerBox = styled(Box)((theme)=>({
+       
+        
+         
+         
+}))

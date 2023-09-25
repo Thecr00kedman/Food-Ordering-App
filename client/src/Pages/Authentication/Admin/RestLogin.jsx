@@ -1,7 +1,7 @@
 import { Box, Button,TextField,Typography } from "@mui/material"
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LockIcon from '@mui/icons-material/Lock';
-import { FormContainer,FormInput, ButtonContainer } from "../styles"
+import { FormContainer,FormInput, ButtonContainer,ContainerBox } from "../styles"
 import Navbar from "../../../Components/Navbar/Navbar";
 import {Link, useNavigate} from 'react-router-dom'
 import { useState } from "react";
@@ -62,15 +62,17 @@ export const Restlogin=()=> {
         <Navbar/>
 <FormContainer>
         
-        <div style={{marginTop:'7%'}}>
+        <ContainerBox style={{marginTop:'7%'}}>
             <Typography variant="h2">Partner Login</Typography>
         <form>
-            <FormInput><PersonOutlineIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="email" variant="outlined" name="email" type="email" /></FormInput>
-            <FormInput><LockIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="Password" variant="outlined" name="password" type="password" /></FormInput>
+            <FormInput><PersonOutlineIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} name="email" placeholder="enter your email"type="email" /></FormInput>
+            <FormInput><LockIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} placeholder="enter your email" name="password" type="password" /></FormInput>
+            
         </form>
             <ButtonContainer><Button onClick={submitLogin} variant='contained' size="large" style={{width:"15rem"}}>Login</Button></ButtonContainer>
+            
             <Link style={{textDecoration:'none',color:'#1976d2'}} to={'/RestSignUp'}>Become a Partner?&nbsp;&nbsp;Register Here</Link>
-        </div>
+        </ContainerBox>
 
 
      </FormContainer>

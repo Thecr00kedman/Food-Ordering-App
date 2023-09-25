@@ -76,8 +76,8 @@ import { useGlobalContext } from "../../Context/Context";
         <div style={{marginTop:'7%'}}>
         <Typography variant='h2'>Login</Typography>
         <form>
-            <FormInput><PersonOutlineIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="email" variant="outlined" name="email" type="email" /></FormInput>
-            <FormInput><LockIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} label="Password" variant="outlined" name="password" type="password" /></FormInput>
+            <FormInput><PersonOutlineIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} placeholder="enter your email" name="email" type="email" /></FormInput>
+            <FormInput><LockIcon/><TextField  onChange={(e)=> handleChange(e)} style={{width:"50%"}} placeholder="enter your password" name="password" type="password" /></FormInput>
         </form>
             <ButtonContainer><Button onClick={SubmitLogin} variant='contained' size="large" style={{width:"15rem"}}>Login</Button></ButtonContainer>
             <Link style={{textDecoration:'none',color:'#1976d2'}} to={'/SignUp'}>New Here?&nbsp;Sign Up</Link>

@@ -7,41 +7,54 @@ export const Nav = styled(Box)((theme)=>({
       
     display:'flex',
     width:"100vw",
-    padding:'8px 12px',
-   justifyContent:'space-around',
-    alignItems:'center',
+    padding:'5px 10px',
+    justifyContent:'left',
     position:'static',
     background:"white",
     boxShadow:'3px 3px 6px 3px #888888',
-    gap:'20px',
+    whiteSpace:'nowrap',
+    gap:'4px',
     "& div":{
        display:'flex',
-       width:'100%',
        alignItems:'center',
-
     },
+    
     "& input":{
        width:'100%',
     },
     "& div > a":{
-       fontSize:"14px",
+       alignItems:'center',
        textDecoration:'none',
        padding:'0 1rem',
-       // whiteSpace:'nowrap',
        display:'flex',
        flexDirection:'row',
        textDecoration:'none',
        color:'black',
-       
+    },
+    "& :hover":{
+      
+         color:'orange'
+      
+    },
+    "& div > a> span":{
+       fontSize:"1rem",       
        
     },
     '& div > svg':{
-       fontSize:'1.5rem',
+       fontSize:'1rem',
 
     },
     '@media screen and (max-width: 768px)': {
-       flexDirection: 'column', 
-       alignItems: 'left',
+       display:'flex',
+       flexDirection:'column',
+       textAlign:'left',
+       "& div > a":{
+           textAlign:'left',
+       },
+       "& div>a>span":{
+         fontSize:'0.8rem',
+
+       }
      },
      '@media screen and (max-width: 468)': {
        flexDirection: 'column', 
@@ -62,33 +75,36 @@ export const Nav = styled(Box)((theme)=>({
 export const LogoContainer = styled(Box)((theme)=>({
 
     "img" : {
-        width:"9rem",
+      //   width:"9rem",
         
     }
     
 }))
 export const SearchBar = styled(Box)((theme)=>({
-        padding:'5px',
-        height:'40px',
-        border:'1px solid #737373',
-        borderRadius:'1.3rem',
-        
-
+   
         "& div":{
               display:'flex',
+              flexGrow:'1',
               textDecoration:'none',
               color:'Black', 
+              border:'1px solid #737373',
+               borderRadius:'1.3rem',
+               padding:"0.5rem",
                 
         },
 
-       "& div >input":{
+       "& >div >input":{
+              display:'flex',
+              flexDirection:'row',
               border:"none",
               outline:'none',
               color:'#737373',
-              paddingLeft:"5px"
+              paddingLeft:"5px",
+              
        },
 }))
 export const Offers = styled(Box)((theme)=>({
+   
 
 }))
 

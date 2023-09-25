@@ -28,7 +28,7 @@ export const Home = () => {
                 }
                 }
                 else{
-                    toast.error('error while verifying the tokend')
+                    toast.error('error while verifying the token')
                 }
             }
            
