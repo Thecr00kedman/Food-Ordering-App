@@ -7,4 +7,8 @@ export default defineConfig({
   server: {
     host: '0.0.0.0', // Bind to all network interfaces,
   },
+  build: {
+    chunkSizeWarningLimit: 1000, // Raise the limit to 1000KB (1MB)
+  },
 })
+
