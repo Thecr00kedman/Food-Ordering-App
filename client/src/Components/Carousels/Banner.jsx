@@ -2,60 +2,50 @@ import { Box, Typography } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { BannerData } from "../../assets/data";
-import { CarouselContainer } from "./Styles";
+
 
 export const Banner = () => {
   const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 1,
-    },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 3,
+      slidesToSlide: 2 // optional, default to 1.
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 1024, min: 769 },
       items: 2,
+      slidesToSlide: 1 // optional, default to 1.
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 2,
-    },
+      breakpoint: { max: 768, min: 0 },
+      items: 1,
+      slidesToSlide: 1 // optional, default to 1.
+    }
   };
-
   return (
-    
-    <CarouselContainer>
-
-     <Typography variant="h5" style={{textAlign:"left",margin:"1rem 0 0 1.5rem",fontWeight:'700'}}>Best offers for you</Typography>   
     <Carousel
-      swipeable={true}
-      autoPlaySpeed={1000}
-      infinite={true}
-
-      draggable={true}
-      responsive={responsive}
-      ssr={true} // means to render carousel on server-side.
-      keyBoardControl={true}
-      customTransition="transform 0.5s ease-out"
-      transitionDuration={500}
-      containerClass="carousel-container"
-      itemClass="carouselItem"
-    >
-      {
+    swipeable={false}
+    draggable={false}
+    showDots={true}
+    infinite={true}
+    responsive={responsive}
+    ssr={true} // means to render carousel on server-side.
+    autoPlaySpeed={1000}
+    keyBoardControl={true}
+    containerClass="carousel-container"
+    removeArrowOnDeviceType={["tablet", "mobile"]}
+    dotListClass="custom-dot-list-style"
+    itemClass="carousel-item-padding-40-px"
+  >
+    {
         BannerData.map((item)=>(
-            <Box key={item.id} className="Items">
-               <img style={{width:"100%", height:"100%",objectFit:'cover'}} src={item.Url} alt="" />
+            <Box key={item.id} className="Items" sx={{width:"100%",height:'100%',padding:'1rem'}}>
+               <Box><img style={{width:"100%",height:"100%",objectFit:'cover'}} src={item.Url} alt="This is a banner" /></Box>
             </Box>
         ))
       }
-    </Carousel>
-    </CarouselContainer>
-
-
-);
-};
+  </Carousel>
+  )
+}
 
 export default Banner;

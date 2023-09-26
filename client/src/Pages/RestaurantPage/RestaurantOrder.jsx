@@ -43,8 +43,8 @@ export const RestaurantOrder=()=>{
                     </Box>
                   </CardContent>
                  </div>
-                  <CardActions sx={{display:'flex',flexDirection:'row',width:'25vw',padding:'1rem',textAlign:'left,',justifyContent:'space-between'}}>
-                    <Box sx={{display:'flex',flexDirection:"row",alignItems:'center'}}><Typography>Amount Paid:</Typography>&nbsp;&nbsp;<CurrencyRupeeIcon/><Typography>{order.amount}</Typography></Box>
+                  <CardActions style={{display:'flex',flexDirection:'row',width:'100%',padding:"1rem",justifyContent:'space-between',textAlign:"left"}}>
+                    <Box sx={{display:'flex',flexDirection:"row",}}><Typography>Amount Paid:</Typography>&nbsp;&nbsp;<CurrencyRupeeIcon/><Typography>{order.amount}</Typography></Box>
                     <Typography>On:&nbsp;&nbsp;{date}</Typography></CardActions>
                  </Card>
              </Grid>

@@ -25,6 +25,7 @@ export const Left = styled(Box)(({theme})=>({
     display:"flex",
     flexDirection:'column',
     justifyContent:'center',
+    overflowY:'hidden',
     // marginLeft:'4rem',
     flex:0.5,
     padding:'2rem 4rem'

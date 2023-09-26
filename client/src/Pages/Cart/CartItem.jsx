@@ -148,13 +148,13 @@ export const CartItem = () => {
                         </ProductDetails>
                         
                         <div style={{display:'flex',flexDirection:"column"}}>
-                            <Box style={{display:'flex',flexDirection:'row'}}> 
+                            <Box style={{display:'flex',flexDirection:'row',alignItems:'center'}}> 
                                <Button>
                                <RemoveRoundedIcon/>
                                </Button>
+                               <Typography>1</Typography>
                                <Button>
-                               
-                                    <AddBoxRoundedIcon/>
+                                <AddBoxRoundedIcon/>
                                </Button>
                            </Box>
                            
