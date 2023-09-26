@@ -1,7 +1,6 @@
-<img width="960" alt="image" src="https://github.com/Thecr00kedman/Food-Ordering-App/assets/117864728/df5efa2b-f6df-4872-a992-64ea6d3e62f3"># Food Ordering App (MERN Stack)
+Food Ordering App (MERN Stack)
 
 Welcome to the Food Ordering App, a web application built with the MERN stack (MongoDB, Express.js, React, Node.js), Redux Toolkit, Material-UI, and Swagger UI for documentation. This app allows users to browse restaurants, order food, and track deliveries.
-
 
 
 ## Features
