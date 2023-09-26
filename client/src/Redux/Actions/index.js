@@ -44,7 +44,6 @@ const URL= 'http://localhost:8000';
             }
         }
         export const verifyUser = async()=>{
-
             try {
                 return await axios.get(`${URL}/verify`)
             } catch (error) {
