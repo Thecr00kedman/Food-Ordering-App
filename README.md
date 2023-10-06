@@ -80,10 +80,9 @@ Contributing
 Contributions are welcome! Please follow our contribution guidelines for details.
 
 Contact
-If you have any questions or feedback, please contact us at your-aditya22950@gmail.com.
+If you have any questions or feedback, please contact me at-aditya22950@gmail.com.
 
 Acknowledgments
-Special thanks to Name of Icon/Asset Library for providing icons/assets used in this app.
 Inspired by Similar Food Ordering App.
 Enjoy your meal! 🍔🍕🍣
 
