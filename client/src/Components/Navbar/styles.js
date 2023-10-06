@@ -85,6 +85,7 @@ export const SearchBar = styled(Box)((theme)=>({
         "& div":{
               display:'flex',
               flexGrow:'1',
+              flexWrap:"nowrap",
               textDecoration:'none',
               color:'Black', 
               border:'1px solid #737373',

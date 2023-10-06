@@ -25,7 +25,7 @@ export const Banner = () => {
   return (
     <Carousel
     swipeable={false}
-    draggable={false}
+    draggable={true}
     showDots={true}
     infinite={true}
     responsive={responsive}

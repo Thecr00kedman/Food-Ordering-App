@@ -8,7 +8,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Navbar from "../../Components/Navbar/Navbar";
 import StarIcon from '@mui/icons-material/Star';
 import { useDispatch, useSelector } from "react-redux";
-import { GetRestaurant } from "../../Redux/Store";
+import { GetCartProducts, GetRestaurant } from "../../Redux/Store";
 import {useNavigate, useParams} from 'react-router-dom'
 import { ImageContainer,Product,Left,Right,SellerHead,BoxContainer,Top,BoxDropdown } from "../styles";
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
@@ -37,6 +37,7 @@ export const RestaurantPage = () => {
 
     const navigate = useNavigate();
     const data = useSelector((state)=>state.restaurants.Singlerestaurant)
+    
 
     const [toggle,setToggle] = useState(false)
     
@@ -44,13 +45,16 @@ export const RestaurantPage = () => {
     const AddproductstoCart = async({productId,productName,productQuantity,productPrice,productImage,userId,restroId})=>{
 
        const response= await AddToCart({productId,productName,productQuantity,productPrice,productImage,userId,restroId})
+       
       
        if(response){
          if(response.data.error){
             toast.error(response.data.error)
          }else if(response.data.success){
             toast.success(response.data.success)
+            dispatch(GetCartProducts(userId));
             navigate('/cart')
+          
          }
        }
        else{

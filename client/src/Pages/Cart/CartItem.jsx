@@ -22,20 +22,20 @@ export const CartItem = () => {
     const data = useSelector((state)=>state.restaurants.cart)
     const navigate= useNavigate(); 
     const [allproducts,setAllproducts] =useState([])
-    const[ischanged,setIschanged] = useState(data)
+    
     const userId = localStorage.getItem('userId')
     const {total} = useGlobalContext();
     
     const dispatch= useDispatch();   
+   //calling these functions on component did mount
     useEffect(()=> {
         const fetchData = async () => {
-             dispatch(GetCartProducts(userId));
-            
+             dispatch(GetCartProducts(userId));    
         };
         fetchData();       
-    },[ischanged])
+    },[])
     
-    
+   // for removing products from cart 
     const RemoveProduct =async({productId,userId})=> {
        
         const response= await RemoveFromCart({productId,userId})
