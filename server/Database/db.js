@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 
 const Connection =async() => {
-    const URL = "mongodb://127.0.0.1:27017/Capstone"
+    const URL = `mongodb+srv://aditya22950:dR188kY66FBdQsQe@foodzone.qzj8k9g.mongodb.net/?retryWrites=true&w=majority`
     try {
        await mongoose.connect(URL,{useUnifiedTopology:true, useNewUrlParser:true});
         console.log('Database Connected Successfully')

@@ -7,7 +7,6 @@ import bodyParser from 'body-parser';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express'
 import { options } from './config.js';
-// import path from 'path';
 
 
 
@@ -21,10 +20,6 @@ app.use(cors({
 app.use(express.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: true , limit: "100mb"}))
 app.use(bodyParser.json())
-// app.use(express.static(path.join(__dirname,'../client/dist')))
-// app.get("*",(req,res)=>{
-//     res.sendFile(path.join(__dirname,'../client/dist/index.html'))
-// })
 
 const swaggerdoc = swaggerJSDoc(options)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerdoc));
