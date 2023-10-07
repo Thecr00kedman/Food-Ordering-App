@@ -1,14 +1,13 @@
 import axios from 'axios'
 
 const URL= 'https://food-ordering-app-backen.onrender.com';
-
         export const addusers = async(data)=>{
             try {
                 return await axios.post(`${URL}/add`,data);
                 
             } catch (error) {
                 console.log('error while calling the Add user API')
-                
+       
             }
         }
         export const getUser =async(data)=>{
