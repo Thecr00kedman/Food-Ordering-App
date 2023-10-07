@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL= 'https://food-ordering-app-backen.onrender.com/';
+const URL= 'https://food-ordering-app-backen.onrender.com';
 
         export const addusers = async(data)=>{
             try {

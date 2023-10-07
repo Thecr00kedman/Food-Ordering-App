@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice, configureStore, createStore} from "@reduxjs/toolkit"
 import axios from 'axios'
 
-const URL = "https://food-ordering-app-backen.onrender.com/"
+const URL = "https://food-ordering-app-backen.onrender.com"
 
 const initialState ={
 
