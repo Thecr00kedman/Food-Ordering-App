@@ -16,10 +16,6 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { AddToCart } from "../../Redux/Actions";
 import { toast } from "react-toastify";
 
-
-
-
-
 export const RestaurantPage = () => {
     
     const userId = localStorage.getItem('userId') //this is user Id
@@ -90,22 +86,22 @@ export const RestaurantPage = () => {
                                        <Top style={{textAlign:'left'}}>Recommended<KeyboardArrowUpIcon sx={{cursor:"pointer"}} onClick={()=>setToggle(false)}/></Top>
                                     {
                                       
-                                         data.products.map((item)=>(
+                                         data?.products?.map((item)=>(
                                              
                                                    <Product key={item._id}>
  
                                                    <Left>
                                                             <div><SellerHead><RadioButtonCheckedIcon sx={{fontSize:'14px',color:'green'}}/>&nbsp;<StarIcon sx={{color:"orange",fontSize:'15px'}}/><Typography fontSize={"small"} color={"orange"}>Bestseller</Typography></SellerHead>
-                                                            <div><Typography>{item.name}</Typography></div>
-                                                            <div style={{display:"flex",alignItems:"center"}}><CurrencyRupeeIcon sx={{fontSize:"16px"}}/><Typography>{item.price}</Typography></div></div>
-                                                            <div><span>{item.description}</span>
+                                                            <div><Typography>{item?.name}</Typography></div>
+                                                            <div style={{display:"flex",alignItems:"center"}}><CurrencyRupeeIcon sx={{fontSize:"16px"}}/><Typography>{item?.price}</Typography></div></div>
+                                                            <div><span>{item?.description}</span>
                                                             </div>
                                                    </Left>
                                                    <Right>
                                                        <ImageContainer>
-                                                           <div className="imageBox"><img src={item.image} alt=" " /></div>
-                                                           <Button variant="contained" onClick={()=>AddproductstoCart({productId:item._id,productName:item.name,productQuantity:item.quantity,productPrice:
-                                                                    item.price, productImage:item.image,userId,restroId})}>Add</Button>
+                                                           <div className="imageBox"><img src={item?.image} alt=" item" /></div>
+                                                           <Button variant="contained" onClick={()=>AddproductstoCart({productId:item?._id,productName:item?.name,productQuantity:item?.quantity,productPrice:
+                                                                    item?.price, productImage:item?.image,userId,restroId})}>Add</Button>
 
                                                        </ImageContainer>
                                                    </Right>

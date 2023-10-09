@@ -61,18 +61,18 @@ function App() {
                          pauseOnHover
                          theme="light"/>
          <Routes>
-             <Route exact path='/' element={<Home/>} />
-             <Route exact path='/login' element={<Login/>}/>
-             <Route exact path='/Signup' element={<Signup/>}/>
-             <Route exact path='/Restlogin' element={<Restlogin/>}/>
-             <Route exact path='/RestSignup'element={<RestSignup/>}/>           
-             <Route exact path='/Restaurant/:id' element={<RestaurantPage/>}/>
-             <Route exact path='/Cart' element={<Cart/>}/>  
+             <Route path='/' element={<Home/>} />
+             <Route path='/login' element={<Login/>}/>
+             <Route path='/Signup' element={<Signup/>}/>
+             <Route path='/Restlogin' element={<Restlogin/>}/>
+             <Route path='/RestSignup'element={<RestSignup/>}/>           
+             <Route path='/Restaurant/:id' element={<RestaurantPage/>}/>
+             <Route path='/Cart' element={<Cart/>}/>  
              {role==='user' && <Route path='/PreviousOrder' element={<PreviousOrder/>} />}
-             {role==='restaurant' && <Route exact path='/RestaurantOrder' element={<RestaurantOrder/>} />}
-             {role==='restaurant' && <Route exact path='/edit/:productId' element={<Edit/>}/>}
-             {role==='restaurant' && <Route exact path='/ShowAll' element={<ShowAll/>}/>}
-             {role==='restaurant' && <Route exact path='/RestProfile' element={<RestProfile/>}/>}
+             {role==='restaurant' && <Route path='/RestaurantOrder' element={<RestaurantOrder/>} />}
+             {role==='restaurant' && <Route path='/edit/:productId' element={<Edit/>}/>}
+             {role==='restaurant' && <Route path='/ShowAll' element={<ShowAll/>}/>}
+             {role==='restaurant' && <Route path='/RestProfile' element={<RestProfile/>}/>}
 
          </Routes>
   </BrowserRouter>
