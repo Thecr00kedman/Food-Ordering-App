@@ -111,7 +111,7 @@ export const Navbar = () => {
             )
             :
            (
-            <MenuIcon onClick={openMenu}/>
+            <Nav><MenuIcon onClick={openMenu}/></Nav>
            )
         
  
