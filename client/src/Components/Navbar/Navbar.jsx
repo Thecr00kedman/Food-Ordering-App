@@ -19,6 +19,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import { useEffect, useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 export const Navbar = () => {
@@ -32,6 +33,12 @@ export const Navbar = () => {
        setSystemWidth(width)
     },width);
     const[toggle,setToggle]= useState(false)
+    const openMenu=()=>{
+        setToggle(true)
+    }
+    const closeMenu=()=>{
+        setToggle(false)
+    }
     
 
     const handleLogout = ()=> {
@@ -55,7 +62,8 @@ export const Navbar = () => {
         (
             toggle ? 
             (
-                <Nav>
+            <Nav>
+           <CloseIcon onClick={closeMenu}/>
            <LogoContainer>
             <Box sx={{width:"9rem"}}><Link to={'/'}><img src={Logo} alt="Logo" /></Link></Box>            
             </LogoContainer>
@@ -103,7 +111,7 @@ export const Navbar = () => {
             )
             :
            (
-            <MenuIcon/>
+            <MenuIcon onClick={openMenu}/>
            )
         
  
